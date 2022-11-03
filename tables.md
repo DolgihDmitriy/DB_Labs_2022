@@ -29,19 +29,12 @@
 |имя поля | тип | ограничения | описание |
 |:---:|:---:|:---:|:---:|
 | id | pk(INT) | auto increment; not null; unique | первичный ключ |
-| products_descs_id | fk(INT) | not null | описание товара |
 | category_id | fk(INT) | not null | категория |
-
-
-## products_description (Описания товаров)
-|имя поля | тип | ограничения | описание |
-|:---:|:---:|:---:|:---:|
-| id | pk(INT) | auto increment; not null; unique | первичный ключ |
 | name | VARCHAR(150) | not null | название товара |
 | price | INT | not null | цена товара |
 | description | VARCHAR(1000) | not null | описание товара |
-| status | VARCHAR(120) | not null; default(moderation) | статус товара|
-| size_id | fk(INT) | not null | размер |
+| status | VARCHAR(120) | not null; default(moderation) | статус товара |
+| size| VARCHAR(100) | not null | размер |
 | manufacturer_id | fk(INT) | not null | производитель |
 | discount_id | fk(INT) | not null | скидка |
 
@@ -53,13 +46,6 @@
 | name | VARCHAR(100) | not null | Название категории |
 
 
-## size (Размер)
-|имя поля | тип | ограничения | описание |
-|:---:|:---:|:---:|:---:|
-| id | pk(INT) | auto increment; not null; unique | первичный ключ |
-| name | VARCHAR(100) | not null | Размер|
-
-
 ## manufacturer (Производитель)
 |имя поля | тип | ограничения | описание |
 |:---:|:---:|:---:|:---:|
@@ -67,11 +53,12 @@
 | name | VARCHAR(100) | not null | Производитель|
 
 
-## carts (корзина)
+## orders (Заказы)
 |имя поля | тип | ограничения | описание |
 |:---:|:---:|:---:|:---:|
 | id | pk(INT) | auto increment; not null; unique | первичный ключ |
 | user_id | fk(INT) | not null; unique | пользователь |
+| created_date | date | not null | время |
 
 
 ## product_image (Фото товара)
@@ -82,21 +69,21 @@
 | url | VARCHAR(300) | not null | путь к фото |
 
 
-## Скидка (discount)
+## discount (Скидка)
 |имя поля | тип | ограничения | описание |
 |:---:|:---:|:---:|:---:|
 | id | pk(INT)) | auto increment; not null; unique | первичный ключ |
 | discount | INT | not null | скидка |
 
 
-## Корзина и товар (carts&products)
+## orders&products (Заказы и продукты)
 |имя поля | тип | ограничения | описание |
 |:---:|:---:|:---:|:---:|
 | id | pk(INT) | auto increment; not null; unique | первичный ключ |
-| cart_id | fk(INT) | not null | корзина пользователя |
+| order_id | fk(INT) | not null | номер заказа |
 | product_id | fk(INT) | not null | товар |
 
 
 Связи многие ко многим для которых были созданы промежуточные таблицы:
 
-1.В корзине может быть несколько товаров, товары могут лежать в разных корзинах
+1.В заказе может быть несколько товаров, товары могут содержаться в разных заказах
