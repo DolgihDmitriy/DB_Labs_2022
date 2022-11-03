@@ -31,10 +31,7 @@
 | id | pk(INT) | auto increment; not null; unique | первичный ключ |
 | category_id | fk(INT) | not null | категория |
 | name | VARCHAR(150) | not null | название товара |
-| price | INT | not null | цена товара |
-| description | VARCHAR(1000) | not null | описание товара |
-| status | VARCHAR(120) | not null; default(moderation) | статус товара |
-| size| VARCHAR(100) | not null | размер |
+| product_description_id | fk(INT) | not null | внешний ключ на описание товара |
 | manufacturer_id | fk(INT) | not null | производитель |
 | discount_id | fk(INT) | not null | скидка |
 
@@ -83,6 +80,15 @@
 | order_id | fk(INT) | not null | номер заказа |
 | product_id | fk(INT) | not null | товар |
 
+
+## product_description (Описание товаров)
+|имя поля | тип | ограничения | описание |
+|:---:|:---:|:---:|:---:|
+| id | pk(INT) | auto increment; not null; unique | первичный ключ |
+| price | INT | not null | цена товара |
+| description | VARCHAR(1000) | not null | описание товара |
+| status | VARCHAR(120) | not null; default(moderation) | статус товара |
+| size| VARCHAR(100) | not null | размер |
 
 Связи многие ко многим для которых были созданы промежуточные таблицы:
 
