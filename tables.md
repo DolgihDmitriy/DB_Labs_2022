@@ -3,7 +3,7 @@
 |имя поля | тип | ограничения | описание |
 |:---:|:---:|:---:|:---:|
 | id | pk(INT) | auto increment; not null; unique | первичный ключ |
-| cart_id | fk(INT) | auto increment; not null; unique | корзина пользователя |
+| cart_id | fk(INT) | not null | корзина пользователя |
 | name | VARCHAR(100) | not null | ФИО пользователя |
 | email | VARCHAR(70) | not null | почта пользователя |
 | password | VARCHAR(270) | not null | пароль пользователя |
@@ -55,7 +55,8 @@
 |:---:|:---:|:---:|:---:|
 | id | pk(INT) | auto increment; not null; unique | первичный ключ |
 | user_id | fk(INT) | not null; unique | пользователь |
-| created_date | date | not null | время |
+| created_date | date | not null | время заказа |
+| sum | INT | not null | общая сумма заказа |
 
 
 ## product_image (Фото товара)
@@ -90,6 +91,24 @@
 | status | VARCHAR(120) | not null; default(moderation) | статус товара |
 | size| VARCHAR(100) | not null | размер |
 
+
+## сarts(Корзина)
+|имя поля | тип | ограничения | описание |
+|:---:|:---:|:---:|:---:|
+| id | pk(INT) | auto increment; not null; unique | первичный ключ |
+| user_id | fk(INT) | not null | пользователь |
+
+
+## carts&products (Корзина и продукты)
+|имя поля | тип | ограничения | описание |
+|:---:|:---:|:---:|:---:|
+| id | pk(INT) | auto increment; not null; unique | первичный ключ |
+| cart_id | fk(INT) | not null | корзина пользователя |
+| product_id | fk(INT) | not null | товар |
+| added_date | date | not null | время добавления товара в корзину |
+
+
 Связи многие ко многим для которых были созданы промежуточные таблицы:
 
 1.В заказе может быть несколько товаров, товары могут содержаться в разных заказах
+2.В корзине может быть несколько товаров, товары могут принадлежать разным корзинам
