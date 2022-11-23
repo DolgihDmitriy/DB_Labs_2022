@@ -3,7 +3,6 @@
 |имя поля | тип | ограничения | описание |
 |:---:|:---:|:---:|:---:|
 | id | pk(INT) | auto increment; not null; unique | первичный ключ |
-| cart_id | fk(INT) | not null | корзина пользователя |
 | name | VARCHAR(100) | not null | ФИО пользователя |
 | email | VARCHAR(70) | not null | почта пользователя |
 | password | VARCHAR(270) | not null | пароль пользователя |
@@ -22,7 +21,7 @@
 |:---:|:---:|:---:|:---:|
 | id | pk(INT) | auto increment; not null; unique | первичный ключ |
 | user_id | fk(INT) | not null | пользователь |
-| message | VARCHAR(400) | not tull | сообщение |
+| message | VARCHAR(400) | not null | сообщение |
 
 
 ## products (Товары)
